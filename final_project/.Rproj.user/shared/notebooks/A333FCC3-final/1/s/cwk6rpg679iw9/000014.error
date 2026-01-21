@@ -1,0 +1,1 @@
+{"frames":[],"message":"Error in chicago_data[chicago_data$year == year, 2]$total : \n  $ operator is invalid for atomic vectors\n"}

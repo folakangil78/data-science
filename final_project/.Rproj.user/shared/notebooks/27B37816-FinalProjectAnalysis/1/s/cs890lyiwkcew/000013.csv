@@ -1,0 +1,7 @@
+"0",""
+"0","industrial_energy_sum <- energy %>%"
+"0","  filter(BUILDING.TYPE == ""Industrial"") %>%"
+"0","  summarise(sumKWH = sum(TOTAL.KWH, na.rm = TRUE),"
+"0","            sumTHERM = sum(TOTAL.THERMS, na.rm = TRUE)) %>%"
+"0","  mutate(total_energy_industrial = sumKWH + sumTHERM)"
+"0","print(industrial_energy_sum)"
