@@ -1,6 +1,0 @@
-"0","library(tidyverse)"
-"0","library(ggplot2)"
-"0","library(dplyr)"
-"0","library(tidyr)"
-"0","energy <- read.csv(""/Users/fran-pellegrino/Library/CloudStorage/OneDrive-LoyolaUniversityChicago/DSCI101/DSCI_Whalen/final_project/data/Energy_Usage_2010.csv"")"
-"0","#view(energy)"
