@@ -1,0 +1,194 @@
+---
+title: "FinalProjectAnalysis"
+author: "Francis Olakangil"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+energy <- read.csv("/Users/fran-pellegrino/Library/CloudStorage/OneDrive-LoyolaUniversityChicago/DSCI101/DSCI_Whalen/final_project/data/Energy_Usage_2010.csv")
+#view(energy)
+```
+
+```{r}
+find_mean <- function(data, column_name) {
+  if (!(column_name %in% names(data))) {
+    stop("Column doesn't exist")
+  }
+  column_data <- data[[column_name]]
+  mean_value <- mean(column_data, na.rm = TRUE)
+  return(mean_value)
+}
+jan_kwh <- find_mean(energy, "KWH.1")
+feb_kwh <- find_mean(energy, "KWH.2")
+mar_kwh <- find_mean(energy, "KWH.3")
+apr_kwh <- find_mean(energy, "KWH.4")
+may_kwh <- find_mean(energy, "KWH.5")
+jun_kwh <- find_mean(energy, "KWH.6")
+jul_kwh <- find_mean(energy, "KWH.7")
+aug_kwh <- find_mean(energy, "KWH.8")
+sep_kwh <- find_mean(energy, "KWH.9")
+oct_kwh <- find_mean(energy, "KWH.10")
+nov_kwh <- find_mean(energy, "KWH.11")
+dec_kwh <- find_mean(energy, "KWH.12")
+jan_therm <- find_mean(energy, "THERM.1")
+feb_therm <- find_mean(energy, "THERM.2")
+mar_therm <- find_mean(energy, "THERM.3")
+apr_therm <- find_mean(energy, "THERM.4")
+may_therm <- find_mean(energy, "THERM.5")
+jun_therm <- find_mean(energy, "THERM.6")
+jul_therm <- find_mean(energy, "THERM.7")
+aug_therm <- find_mean(energy, "THERM.8")
+sep_therm <- find_mean(energy, "THERM.9")
+oct_therm <- find_mean(energy, "THERM.10")
+nov_therm <- find_mean(energy, "THERM.11")
+dec_therm <- find_mean(energy, "THERM.12")
+
+kwh_df <- data.frame(
+  jan_kwh,
+  feb_kwh,
+  mar_kwh,
+  may_kwh,
+  jun_kwh,
+  jul_kwh,
+  aug_kwh,
+  sep_kwh,
+  oct_kwh,
+  nov_kwh,
+  dec_kwh)
+therm_df <- data.frame(
+  jan_therm,
+  feb_therm,
+  mar_therm,
+  apr_therm,
+  may_therm,
+  jun_therm,
+  jul_therm,
+  aug_therm,
+  sep_therm,
+  oct_therm,
+  nov_therm,
+  dec_therm)
+
+kwh_month_order <- c("jan_kwh", "feb_kwh", "mar_kwh", "apr_kwh", "may_kwh", "jun_kwh", "jul_kwh", "aug_kwh", "sep_kwh", "oct_kwh", "nov_kwh", "dec_kwh")
+
+kwh_df_long <- gather(kwh_df, key = "variable", value = "value") %>% 
+  mutate(variable = factor(variable, levels = kwh_month_order))
+
+# Create a histogram using ggplot
+ggplot(kwh_df_long, aes(x = variable, y = value, fill = variable)) +
+  geom_histogram(stat = "identity", position = "dodge", color = "white", bins = 30) +
+  labs(title = "KWH Monthly Usage ~ 2010",
+       x = "Month",
+       y = "Usage (in Kilowatt Hours)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = FALSE)
+
+therm_month_order <- c("jan_therm", "feb_therm", "mar_therm", "apr_therm", "may_therm", "jun_therm", "jul_therm", "aug_therm", "sep_therm", "oct_therm", "nov_therm", "dec_therm")
+
+therm_df_long <- gather(therm_df, key = "variable", value = "value") %>% 
+  mutate(variable = factor(variable, levels = therm_month_order))
+
+# Create a histogram using ggplot
+ggplot(therm_df_long, aes(x = variable, y = value, fill = variable)) +
+  geom_histogram(stat = "identity", position = "dodge", color = "white", bins = 30) +
+  labs(title = "THERM Monthly Usage ~ 2010",
+       x = "Month",
+       y = "Usage (in THERMs)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = FALSE)
+
+```
+
+```{r}
+split_dataframes <- split(energy, energy$CENSUS.BLOCK)
+#print(split_dataframes)
+
+sum_values_kwh <- data.frame(map_dbl(split_dataframes, ~ sum(.x$TOTAL.KWH, na.rm = TRUE)))
+print(sum_values_kwh)
+
+largest_total_kwh <- max(as.matrix(sum_values_kwh), na.rm = TRUE)
+cat("The Census Block with the highest levels of KWH usage across the months of 2010 was Census Block: 1.70318e+14, with a total usage of", largest_total_kwh, "KWH. \n")
+
+sum_values_therm <- data.frame(map_dbl(split_dataframes, ~ sum(.x$TOTAL.THERMS, na.rm = TRUE)))
+print(sum_values_therm)
+
+largest_total_therm <- max(as.matrix(sum_values_therm), na.rm = TRUE)
+cat("\nThe Census Block with the highest levels of natural gas usage across the months of 2010 was Census Block: 1.70311e+14, with a total usage of", largest_total_therm, "therms.")
+
+```
+
+```{r}
+residential_energy_sum <- energy %>%
+  filter(BUILDING.TYPE == "Residential") %>%
+  summarise(sumKWH = sum(TOTAL.KWH, na.rm = TRUE),
+            sumTHERM = sum(TOTAL.THERMS, na.rm = TRUE)) %>%
+  mutate(total_energy_residential = sumKWH + sumTHERM)
+print(residential_energy_sum)
+
+commercial_energy_sum <- energy %>%
+  filter(BUILDING.TYPE == "Commercial") %>%
+  summarise(sumKWH = sum(TOTAL.KWH, na.rm = TRUE),
+            sumTHERM = sum(TOTAL.THERMS, na.rm = TRUE)) %>%
+  mutate(total_energy_commercial = sumKWH + sumTHERM)
+print(commercial_energy_sum)
+
+industrial_energy_sum <- energy %>%
+  filter(BUILDING.TYPE == "Industrial") %>%
+  summarise(sumKWH = sum(TOTAL.KWH, na.rm = TRUE),
+            sumTHERM = sum(TOTAL.THERMS, na.rm = TRUE)) %>%
+  mutate(total_energy_industrial = sumKWH + sumTHERM)
+print(industrial_energy_sum)
+
+residential_total_energy <- residential_energy_sum[1, "total_energy_residential"]
+commercial_total_energy <- commercial_energy_sum[1, "total_energy_commercial"]
+industrial_total_energy <- industrial_energy_sum[1, "total_energy_industrial"]
+
+if (residential_total_energy > commercial_total_energy && residential_total_energy > industrial_total_energy) {
+  cat("Residential building types used the largest amount of energy in 2010, with a record", residential_total_energy, "joules of energy used across both KWH and THERMs\n")
+} else if (commercial_total_energy > residential_total_energy && commercial_total_energy > industrial_total_energy) {
+  cat("\nCommercial building types used the largest amount of energy in 2010, with a record", commercial_total_energy, "joules of energy used across both KWH and THERMs\n")
+} else if (industrial_total_energy > residential_total_energy && industrial_total_energy > commercial_total_energy) {
+  cat("\nIndustrial building types used the largest amount of energy in 2010, with a record", industrial_total_energy, "joules of energy used across both KWH and THERMs")
+}
+```
+
+```{r}
+bootstrap_statistic <- function(data) {
+  return(mean(data, na.rm = TRUE))
+}
+
+sim_num <- 10000
+
+bootstrap_results <- energy %>%
+  group_by(COMMUNITY.AREA.NAME) %>%
+  summarize(
+    bootstrap_statistics = list(
+      map(sim_num, bootstrap_statistic(energy$TOTAL.KWH))
+    )
+  )
+
+print(bootstrap_results)
+
+```
+
+```{r}
+energy$AbbreviatedLabels <- substr(energy$COMMUNITY.AREA.NAME, 1, 10)
+
+dot_plot <- ggplot(energy, aes(x = AbbreviatedLabels, y = TOTAL.KWH)) +
+  geom_point(size = 0.9, color = "blue") +
+  labs(title = "Dot Plot of KWH Usage by Community",
+       x = "Community Area",
+       y = "Usage (in KWH)")+
+  theme(axis.text.x = element_text(size = 5, angle = 45, hjust = 1))
+print(dot_plot)
+```
+
+
+

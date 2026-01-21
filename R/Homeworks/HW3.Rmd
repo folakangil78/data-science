@@ -1,0 +1,117 @@
+---
+title: "Homework 3"
+author: "Francis Olakangil"
+date: "2023-09-28"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+Submit this rmd file on Sakia as a knitted document. Don't forget to add your own code chunks.
+
+1. Use the `Batting`, `Pitching`, and `People` tables in the Lahman package to answer the following questions:
+```{r}
+library(Lahman)
+library(tidyverse)
+library(dplyr)
+data("Batting")
+data("Pitching")
+data("People")
+
+```
+a) (20 points) Name every player in baseball history who has accumulated at least 300 home runs (HR) AND at least 300 stolen bases (SB). You can find the first and last name of the player in the `People` data frame. Join this to your result along with the total home runs and total bases stolen for each of these elite players.
+```{r}
+#view(People)
+#view(Batting)
+#view(Pitching)
+#help(People)
+#help(Batting)
+
+elite_players <- Batting %>% 
+  group_by(playerID) %>% 
+  summarise(homeRuns = sum(HR),
+            stolenBases = sum(SB)) %>% 
+  filter(homeRuns >= 300 & stolenBases >= 300) %>% 
+  left_join(People, by = c("playerID")) %>% 
+  select(nameFirst, nameLast, homeRuns, stolenBases)
+elite_players
+```
+
+b) (20 points) Similarly, name every pitcher in baseball history who has accumulated at least 300 wins (W) and at least 3,000 strikeouts (SO).
+```{r}
+elite_pitchers <- Pitching %>% 
+  group_by(playerID) %>% 
+  summarise(totalWins = sum(W),
+            totalStrikeouts = sum(SO)) %>% 
+  filter(totalWins >= 300 & totalStrikeouts >= 3000) %>% 
+  left_join(People, by = c("playerID")) %>% 
+  select(nameFirst, nameLast, totalWins, totalStrikeouts)
+elite_pitchers
+
+```
+c) (20 points) Identify the name and year of every player who has hit at least 50 home runs in a single season. Of those player-seasons which player had the lowest batting average (hits/at bats [H/AB])?
+```{r}
+players <- Batting %>%
+  group_by(playerID, yearID) %>% 
+  summarise(homeRuns = sum(HR),
+            totalHits = sum(H),
+            totalAtBats = sum(AB)) %>%
+  mutate(bat_avg = totalHits / totalAtBats) %>% 
+  filter(homeRuns >= 50) %>%
+  arrange(bat_avg) %>% 
+  head(1)
+#head(1) accesses the first row in the output
+players
+
+```
+2. Use the nycflights13 package and the `flights` and `planes` tables to answer the following questions:
+```{r}
+library(nycflights13)
+data("flights")
+data("planes")
+view(flights)
+view(planes)
+```
+a) (20 points) What is the oldest plane (specified by the tailnum variable) that flew from New York City airports in 2013? How many flights?
+```{r}
+oldest_plane <- flights %>% 
+  left_join(planes, by = "tailnum") %>% 
+  summarise(oldestPlane = min(year.y, na.rm = TRUE))
+#not sure why column name is year.y instead of just year like how the column is labeled in planes dataset
+oldest_plane
+
+plane_tag <- planes %>% 
+  filter(year == 1956) %>% 
+  pull(tailnum)
+plane_tag
+
+flight_occurrences <- flights %>% 
+  filter(tailnum == plane_tag) %>% 
+  nrow()
+flight_occurrences
+
+```
+
+b) (20 points) How many airplanes are in the `flights` dataset? How many of those airplanes are included in the planes table? Is there a difference?
+```{r}
+airplane_count <- flights %>% 
+  summarise(airplaneCount = n_distinct(tailnum))
+airplane_count
+
+planes_count <- planes %>% 
+  summarise(planesCount = n_distinct(tailnum))
+planes_count
+
+#taking the actual value out of the dataframe that summarise creates
+airplanecount_value <- airplane_count$airplaneCount
+planescount_value <- planes_count$planesCount
+
+plane_difference <- airplanecount_value - planescount_value
+
+if(plane_difference > 0 | plane_difference < 0) {
+  cat("There are", plane_difference, "planes that are in the flights dataset but not in the planes dataset")
+} else{
+  "There are no differences between the airplanes included in either of the datasets"
+}
+```
+
+

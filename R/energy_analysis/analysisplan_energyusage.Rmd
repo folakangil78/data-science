@@ -1,0 +1,59 @@
+---
+title: "analysisplan_energyusage"
+author: "Francis Olakangil"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Analysis Plan --> Energy Usage Data Project
+
+## Summary
+
+The main direction I want to take this project in is examining the possible correlations between region/building type/area code/etc. and how much energy is used across months/averages/types/etc. I want to both be making conclusions about certain statistics of energy use and modeling and mapping what that usage looks like according to different metrics. I also want to be identifying and proving any sort of variability across the metrics in the dataset, whether that be based on the month in 2010 it is, or how the number of energy-usage accounts in a certain building relates to how much is actually used.
+
+## Methodology
+
+The main ways I want to execute on the general goals outlined in the summary section include creating a new variable, rearranging/summarizing the given data, etc. My current plan is to create a new variable that relates the building age to the average usage of either kilowatts or natural gas in a specific area/community. My goal with relating these three variables in a new column is to depict a form of analysis that stretches across the data. 
+
+I also just want to be answering some basic, intuitive questions when looking at the data such as (keeping in mind that many standard statistics are already calculated in the dataset such as SD and mean):
+
+After having grouped the energy usage data by community area, which area ranked the highest in terms of usage, both kw and gas, respectively? 
+
+Which is the most commmon community area in the dataset? 
+
+Which month(s) experienced the highest levels of usage across both gas and kilowatts? 
+
+How does energy usage tally up in regard to season? If you were to divide each set of 3-4 months based on the season, what would those usage-averages look like?
+
+________________________________________Deeper Analysis Below________________________________________________
+
+I want to build my own function that creates a range of values in terms of usage that gives a small range of values where the most values of usage data showed up. For example, if the majority of community areas had kilowatt-usage values between 70,000 and 80,000, then the function would return that value as a factor of some sort. All the function would presumably need to intake is the dataset and type of energy (kw or gas)
+
+Rearrange data alphabetically based on community name or rearrange by average kilowatt or gas usage and then lowest to highest.
+
+Create function that returns data that is organized by gas usage subtracted from kilowatt usage (monthly or yearly) or vice versa. The function creates a new column returning that value, portraying whether a (community area/specific building) uses more gas or electricity and summarizes based on that information from highest to lowest. The function would essentially show which community areas or specific building types use the most energy in general. Could then map/select those columns for the function's inputs.
+
+Group by story-number in a building and summarize by how much energy was used in that building.
+
+Regarding visuals, I want to create separate graphs with appropriate labels showing how kilowatt energy usage and gas usage changed across the months of 2010. To add aesthetic, my plan is to divide up the months based on season and then attribute the color associated with the season to the appropriate bar according to the month.
+
+I plan to do another final analysis by creating a line plot or scatterplot that compares usage levels across the months with building age, average number of stories, or the census block that the usage is taking place on geographically.
+
+### Possible Exploratory Questions (subject to change or expand)
+
+1. What is the relationship between energy usage across natural gas/kilowatts and community area? What's the specific region that uses the most energy across both kw and gas? What about the Standard Deviations for kw and gas usage per region - does that differ significantly?
+
+2. Which months generally saw higher levels of gas and/or kilowatt energy usage?
+
+3. How does the building subtype affect energy usage? Does the number of electricity accounts per building have a correlation with how much energy is used?
+
+4. How does the overall energy usage (accounting for all the given statistics) track through the course of the year? Is there an identifiable relationship or is it variable?
+
+
+
+
+

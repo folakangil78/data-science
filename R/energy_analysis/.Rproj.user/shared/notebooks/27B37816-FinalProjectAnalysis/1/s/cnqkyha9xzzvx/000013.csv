@@ -1,0 +1,5 @@
+"0","split_dataframes <- split(energy, energy$CENSUS.BLOCK)"
+"0","#print(split_dataframes)"
+"0",""
+"0","sum_values_kwh <- data.frame(map_dbl(split_dataframes, ~ sum(.x$TOTAL.KWH, na.rm = TRUE)))"
+"0","print(sum_values_kwh)"

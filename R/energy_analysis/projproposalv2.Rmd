@@ -1,0 +1,39 @@
+---
+title: "Project Proposal"
+author: "Francis Olakangil"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Energy Usage Data Project
+
+## Project Proposal
+
+I want to use the Energy Usage dataset, with data recorded from 2010 across different types of buildings in Chicago. The data is measured across residential and commercial buildings, and the different types within those two categories. I want to examine energy usage levels between how many kilowatts used per month and natural gas use per month. 
+
+### Questions of Interest
+
+1. What is the relationship between energy usage across natural gas/kilowatts and community area? What's the specific region that uses the most energy across both kw and gas? What about the Standard Deviations for kw and gas usage per region - does that differ significantly?
+
+2. Which months generally saw higher levels of gas and/or kilowatt energy usage?
+
+3. How does the building subtype affect energy usage? Does the number of electricity accounts per building have a correlation with how much energy is used?
+
+4. How does the overall energy usage (accounting for all the given statistics) track through the course of the year? Is there an identifiable relationship or is it variable?
+
+### Potential Complications
+
+Although there is a huge amount of available data in the dataset, the main complication I will have to deal with is that there is a good amount of data missing for specific community areas and census blocks. For specific areas, there is no data regarding kilowatt usage. I will have to remember to exclude those areas when measuring for specific categories or variables (such as monthly or yearly kilowatt usage) 
+
+## Data
+
+There are approx 67,000 rows, and 73 columns, each giving a different measurement of the energy used in a particular community area and census block. The data is generally organized by monthly usage of kilowatt energy and natural gas, specified by region in Chicago, but also has more specific parameters such as how many housing units in the specified area are actually occupied or the average number of stories in buildings in the specified area.
+
+https://data.cityofchicago.org/Environment-Sustainable-Development/Energy-Usage-2010/8yq3-m6wp
+
+```{r}
+
+```
+
+
+
