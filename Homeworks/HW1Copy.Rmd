@@ -1,0 +1,103 @@
+---
+title: "Homework 1"
+subtitle: "DSCI 101"
+author: "Francis Olakangil"
+date: "Due 09-11-2023"
+output: html_document
+---
+Homework should be written as an R Markdown file and the knitted output
+should be submitted. Homework should be turned in on Sakai.
+
+1. (4pts) Set up a github account and create a repository called DSCI101.
+Clone this repo into RStudio: https://github.com/menawhalen/DSCI_101_F23
+
+2. (3pts) Create a numeric vector containing the values 5, 10, 15, 20, and 25. Calculate the mean of this vector and assign it to a variable called `mean_value`. Print the `mean_value`
+
+```{r ex2}
+vec <- c(5, 10, 15, 20, 25)
+mean_value <- mean(vec)
+print(mean_value)
+```
+
+3. (3pts) Create a data frame with the following information about three of your friends:
+
+* Name (character)
+* Age (numeric)
+* Favorite Color (character)
+
+Make sure to include at least three rows of data. Print the entire data frame. Name it whatever you like.
+
+```{r ex3}
+friends <- data.frame(names = c("Mike", "Dylan", "Ryan"),
+              age = c("16", "17", "14"),
+              fav_color = c("blue", "red", "green"))
+print(friends)
+```
+
+4. (3pts) Create two numeric vectors: `vector1` with values 1, 2, 3, and `vector2` with values 4, 5,
+```{r}
+vec1 <- c(1, 2, 3)
+vec2 <- c(4, 5)
+```
+
+6. Perform the following operations:
+
+* Add `vector1` and `vector2` and store the result in a new vector called `sum_vector.`
+* Subtract `vector2` from `vector1` and store the result in a new vector called `diff_vector.`
+* Multiply `vector1` and `vector2` element-wise and store the result in a new vector called `prod_vector.`
+* Divide `vector1` by `vector2` element-wise and store the result in a new vector called `quot_vector.`
+
+Print all four result vectors.
+
+```{r ex4}
+sum_vector <- vec1 + vec2
+sum_vector
+
+diff_vector <- vec1 - vec2
+diff_vector
+
+prod_vector <- vec1 * vec2
+prod_vector
+
+quot_vector <- vec1/vec2
+quot_vector
+
+print(sum_vector)
+print(diff_vector)
+print(prod_vector)
+print(quot_vector)
+```
+
+5. (12pts) Using the `top_colleges_2022` dataset answer the following questions.
+
+a) Read in the csv file and name the variable `college`. This should be simple if question 1 has been completed as the github will download the data folder.
+
+```{r ex5a}
+library(tidyverse)
+college <- read_csv("../data/top_colleges_2022.csv")
+```
+
+b) How many colleges in this data set are in Illinois.
+
+```{r ex5b}
+#view(college)
+illinois_colleges <- college %>% 
+  filter(state...14 == "Illinois")
+nrow(illinois_colleges)
+
+```
+
+c) Find the undergraduate student population of LUC. How many colleges (in this dataset) have a larger undergraduate student population than LUC?
+
+```{r ex5c}
+#view(college)
+luc_pop <- college %>% 
+  filter(organizationName == "Loyola University Chicago") %>% 
+  pull(undergradPop)
+luc_pop
+
+colleges_pop <- college %>% 
+  filter(undergradPop > luc_pop)
+nrow(colleges_pop)
+
+```
