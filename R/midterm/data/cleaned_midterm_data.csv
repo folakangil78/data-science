@@ -1,29 +1,3 @@
-major,year,sport,born,subject,bday,height,sibling,social_media,color,cereal,learn_dsci,books,news,fight,grade,zodiac
-psychology,Freshman,Cubs,Cook County IL,Arts (Music/Art/Theater),odd,65,0,TikTok,Blue,No,I don't know,20-Nov,"Social media from source (CNN,FOX,NPR,etc)",Hot Dog,B,cancer
-psychology,Freshman,Bears,IL,Arts (Music/Art/Theater),even,60,1,Snapchat,Purple,No,I don't know,21-50,Social media from friends,Taco,B,pisces
-data science,Freshman,Bears,US South,Math,odd,63,2,TikTok,Pink,No,TRUE,10-Jan,On the web,Grilled Cheese,A,gemini
-neuroscience & molecular biology,Senior,I don't care for sports,Outside of the US,Sciences (Bio/Chem/etc),even,60,2,Instagram,Yellow,No,TRUE,51-100,On the web,Grilled Cheese,A,virgo
-data science,Freshman,Bears,US West,History/Social Studies,odd,67,2,Instagram,Blue,Yes,TRUE,51-100,"Social media from source (CNN,FOX,NPR,etc)",Hot Dog,B,cancer
-data science,Junior,Bears,Cook County IL,Arts (Music/Art/Theater),odd,67,3,Instagram,Green,No,TRUE,51-100,"Social media from source (CNN,FOX,NPR,etc)",Grilled Cheese,A,cancer
-psychology and english,Senior,Chicago Red Stars,US West,English,even,64,2,BeReal,Blue,No,TRUE,51-100,"Social media from source (CNN,FOX,NPR,etc)",Taco,A,scorpio
-data science,Freshman,Blackhawks,Cook County IL,Math,even,67.2,1,Instagram,Blue,Yes,I don't know,10-Jan,Social media from friends,Grilled Cheese,B,leo
-data science,Freshman,Cubs,US South,Math,odd,75,0,Snapchat,Purple,No,TRUE,100+,On the web,Hot Dog,A,aquarius
-data science,Freshman,I don't care for sports,US South,Math,odd,65,3,Instagram,Pink,No,TRUE,21-50,On the web,Taco,A,aries
-data science,Freshman,I don't care for sports,US Northeast,Sciences (Bio/Chem/etc),odd,68.9,4,Instagram,Green,No,TRUE,100+,On the web,Taco,A,aquarius
-political science,Junior,Cubs,US Northeast,English,odd,71,1,Instagram,Blue,No,TRUE,100+,"Social media from source (CNN,FOX,NPR,etc)",Taco,A,pisces
-data science,Freshman,Cubs,Cook County IL,Sciences (Bio/Chem/etc),odd,65,0,Snapchat,Green,Yes,TRUE,100+,On the web,Grilled Cheese,A,sagittarius
-data science,Sophomore,Cubs,US Midwest (other than IL) ,Sciences (Bio/Chem/etc),odd,69,2,TikTok,Pink,Yes,TRUE,100+,"Social media from source (CNN,FOX,NPR,etc)",Hot Dog,A,aries
-data science,Freshman,I don't care for sports,US West,Math,odd,69,2,Instagram,Red,No,TRUE,51-100,On the web,Grilled Cheese,A,cancer
-psychology,Freshman,I don't care for sports,IL,History/Social Studies,odd,63,1,Snapchat,Red,No,TRUE,100+,Social media from friends,Grilled Cheese,A,pisces
-data science,Sophomore,Cubs,Suburbs of Chicago,Math,odd,69,2,TikTok,Green,No,TRUE,21-50,On the web,Hot Dog,A,aries
-statistics,Senior,White Sox,Cook County IL,Math,even,65,1,Twitter,Green,Yes,TRUE,21-50,"Social media from source (CNN,FOX,NPR,etc)",Taco,A,cancer
-data science,Freshman,Chicago Fire,US Midwest (other than IL) ,Math,even,71,1,BeReal,Purple,Yes,TRUE,51-100,On the web,Taco,A,idk
-data science,Freshman,Blackhawks,US West,History/Social Studies,odd,71,0,Twitter,Black,No,TRUE,10-Jan,On the web,Hot Dog,A,gemini
-data science,Freshman,I don't care for sports,Cook County IL,Sciences (Bio/Chem/etc),even,67,1,TikTok,Purple,No,TRUE,51-100,Social media from friends,Grilled Cheese,B,scorpio
-biology,Freshman,I don't care for sports,Suburbs of Chicago,History/Social Studies,odd,62,1,Instagram,Pink,No,TRUE,100+,On the web,Taco,A,gemini
-data science,Freshman,I don't care for sports,IL,Sciences (Bio/Chem/etc),even,64.5,1,TikTok,Blue,No,TRUE,20-Nov,On the web,Hot Dog,B,virgo
-psychology,Freshman,I don't care for sports,US Midwest (other than IL) ,English,even,66,0,TikTok,Blue,No,TRUE,100+,On the web,Taco,A,taurus
-psychology,Freshman,Cubs,Cook County IL,Arts (Music/Art/Theater),odd,61,2,TikTok,Blue,No,TRUE,0,National news TV,Hot Dog,C,virgo
-psychology,Freshman,I don't care for sports,Cook County IL,Math,odd,65,3,Twitter,Red,No,I don't know,100+,"Social media from source (CNN,FOX,NPR,etc)",Taco,B,leo
-psychology,Freshman,Bears,Cook County IL,Other,even,5'9,1,TikTok,Purple,No,TRUE,21-50,"Social media from source (CNN,FOX,NPR,etc)",Taco,B,cancer
-psychology,Freshman,I don't care for sports,US Midwest (other than IL) ,English,even,65,2,Snapchat,Brown,No,I don't know,100+,Social media from friends,Taco,B,taurus
+version https://git-lfs.github.com/spec/v1
+oid sha256:e0c162535697249f2962694069500b3a96d5b543ea696a8129079d9f1bc1e3d8
+size 4261

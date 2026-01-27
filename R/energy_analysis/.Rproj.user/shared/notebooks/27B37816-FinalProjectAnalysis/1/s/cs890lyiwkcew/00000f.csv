@@ -1,6 +1,3 @@
-"0","residential_energy_sum <- energy %>%"
-"0","  filter(BUILDING.TYPE == ""Residential"") %>%"
-"0","  summarise(sumKWH = sum(TOTAL.KWH, na.rm = TRUE),"
-"0","            sumTHERM = sum(TOTAL.THERMS, na.rm = TRUE)) %>%"
-"0","  mutate(total_energy_residential = sumKWH + sumTHERM)"
-"0","print(residential_energy_sum)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:6a51922bfa8f3fb005422544a538d98c59bb98ecc1be1f0d2c42a76d4b1e2915
+size 316

@@ -1,7 +1,3 @@
-"0",""
-"0","industrial_energy_sum <- energy %>%"
-"0","  filter(BUILDING.TYPE == ""Industrial"") %>%"
-"0","  summarise(sumKWH = sum(TOTAL.KWH, na.rm = TRUE),"
-"0","            sumTHERM = sum(TOTAL.THERMS, na.rm = TRUE)) %>%"
-"0","  mutate(total_energy_industrial = sumKWH + sumTHERM)"
-"0","print(industrial_energy_sum)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:e00930c7639947be2c5024d89b818bca7ca9038b6ad303f509ebda37173e56e9
+size 319

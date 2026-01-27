@@ -1,11 +1,3 @@
-"0",""
-"0","largest_total_kwh <- max(as.matrix(sum_values_kwh), na.rm = TRUE)"
-"0","cat(""The Census Block with the highest levels of KWH usage across the months of 2010 was Census Block: 1.70318e+14, with a total usage of"", largest_total_kwh, ""KWH. \n"")"
-"1","The Census Block with the highest levels of KWH usage across the months of 2010 was Census Block: 1.70318e+14, with a total usage of"
-"1"," "
-"1","2654850942"
-"1"," "
-"1","KWH. 
-"
-"0","sum_values_therm <- data.frame(map_dbl(split_dataframes, ~ sum(.x$TOTAL.THERMS, na.rm = TRUE)))"
-"0","print(sum_values_therm)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:487d3cafb683ea18d3185e349b5a3b508b48a9819612d26244265465c603e6c5
+size 576
